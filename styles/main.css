@@ -372,12 +372,13 @@ nav {
     padding: 0 2rem;
 }
 
+/* Advantages Carousel */
 .carousel-container {
     position: relative;
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin: 0 -1rem;
+    margin: 3rem -1rem 0;
     padding: 0 1rem;
 }
 
@@ -388,14 +389,14 @@ nav {
 
 .advantages-grid {
     display: flex;
-    transition: transform 0.3s ease;
     gap: 2rem;
+    transition: transform 0.3s ease;
 }
 
 .advantage-item {
-    flex: 0 0 100%; /* 移动端一次只显示一个 */
-    width: 100%;
+    flex: 0 0 calc((100% - 64px) / 3); /* 桌面端默认宽度 */
     padding: 1rem;
+    text-align: center;
 }
 
 .carousel-arrow {
@@ -465,11 +466,11 @@ nav {
 
 /* 响应式调整 */
 @media (max-width: 768px) {
+    /* Steps 移动端优化 */
     .steps-grid {
         padding: 0 1rem;
     }
 
-    /* 统一所有 step-item 的样式 */
     .steps-grid .first-row,
     .steps-grid .second-row {
         display: flex;
@@ -479,15 +480,9 @@ nav {
         margin: 0 !important; /* 移除任何可能的外边距 */
     }
 
-    .first-row,
-    .second-row {
-        margin: 0 !important;
-    }
-
     .step-item {
         width: 100%;
         margin: 0 !important;
-        padding: 0 !important;
     }
 
     /* 强制所有相邻元素之间的间距一致 */
@@ -500,30 +495,30 @@ nav {
         margin-top: 2rem !important;
     }
 
-    /* Carousel 部分移动端优化 */
+    /* Carousel 移动端优化 */
     .carousel-container {
-        margin: 0;
+        margin: 2rem -1rem;
         padding: 0;
     }
 
     .carousel-wrapper {
-        margin: 0;
-        padding: 0;
+        overflow: hidden;
+        padding: 0 1rem;
     }
 
-    .advantages {
-        padding: 0;
+    .advantages-grid {
+        display: flex;
+        gap: 2rem;
     }
 
     .advantage-item {
+        flex: 0 0 100%;
         padding: 0 1rem;
     }
 
     .advantage-icon {
-        width: 100%;
-        max-width: 280px;
-        height: auto;
-        aspect-ratio: 1;
+        width: 200px;
+        height: 200px;
         margin: 0 auto 1.5rem;
     }
 
@@ -531,11 +526,15 @@ nav {
         width: 40px;
         height: 40px;
         min-width: 40px;
+        position: absolute;
     }
 
-    .carousel-arrow svg {
-        width: 20px;
-        height: 20px;
+    .carousel-arrow.prev {
+        left: 0;
+    }
+
+    .carousel-arrow.next {
+        right: 0;
     }
 }
 
